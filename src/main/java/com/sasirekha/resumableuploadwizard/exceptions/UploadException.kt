@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager.exceptions
+package com.pdiot.resumableuploadwizard.exceptions
 
 
 class UploadException(message: String): Exception(message) {

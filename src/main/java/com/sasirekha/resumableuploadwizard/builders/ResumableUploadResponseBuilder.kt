@@ -1,7 +1,7 @@
-package com.pdiot.resumableuploadmanager.builders
+package com.pdiot.resumableuploadwizard.builders
 
-import com.pdiot.resumableuploadmanager.models.ResumableUploadResponse
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpResponse
+import com.pdiot.resumableuploadwizard.models.ResumableUploadResponse
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
 
 class ResumableUploadResponseBuilder: UploadWorkerHttpResponseBuilder() {
     override fun build(): UploadWorkerHttpResponse {

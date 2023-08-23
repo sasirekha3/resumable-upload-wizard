@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager.models
+package com.pdiot.resumableuploadwizard.models
 
 import android.content.Context
 import android.net.Uri
@@ -6,11 +6,8 @@ import android.text.TextUtils
 import android.util.Log
 import java.io.*
 import java.lang.RuntimeException
-import java.math.BigInteger
-import java.net.URI
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.*
 import java.util.Base64.getEncoder
 
 

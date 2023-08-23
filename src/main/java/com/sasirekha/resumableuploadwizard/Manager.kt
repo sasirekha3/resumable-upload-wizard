@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager
+package com.pdiot.resumableuploadwizard
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,11 +9,11 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkContinuation
 import androidx.work.WorkManager
-import com.pdiot.resumableuploadmanager.exceptions.UploadException
-import com.pdiot.resumableuploadmanager.models.MD5
-import com.pdiot.resumableuploadmanager.workers.GetSessionUriWorker
-import com.pdiot.resumableuploadmanager.workers.PutFileChunkWorker
-import com.pdiot.resumableuploadmanager.workers.ResumableUploadWorker
+import com.pdiot.resumableuploadwizard.exceptions.UploadException
+import com.pdiot.resumableuploadwizard.models.MD5
+import com.pdiot.resumableuploadwizard.workers.GetSessionUriWorker
+import com.pdiot.resumableuploadwizard.workers.PutFileChunkWorker
+import com.pdiot.resumableuploadwizard.workers.ResumableUploadWorker
 import java.util.ArrayList
 
 

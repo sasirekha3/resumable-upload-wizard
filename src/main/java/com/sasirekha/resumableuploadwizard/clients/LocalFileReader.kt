@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager.clients
+package com.pdiot.resumableuploadwizard.clients
 
 import android.content.Context
 import android.net.Uri

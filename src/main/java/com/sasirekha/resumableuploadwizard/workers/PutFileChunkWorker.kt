@@ -1,22 +1,22 @@
-package com.pdiot.resumableuploadmanager.workers
+package com.pdiot.resumableuploadwizard.workers
 
 import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.work.Data
 import androidx.work.WorkerParameters
-import com.pdiot.resumableuploadmanager.builders.FinalUploadResponseBuilder
-import com.pdiot.resumableuploadmanager.builders.ResumableUploadRequestBuilder
-import com.pdiot.resumableuploadmanager.builders.ResumableUploadResponseBuilder
-import com.pdiot.resumableuploadmanager.clients.CustomHttpClient
-import com.pdiot.resumableuploadmanager.clients.LocalFileReader
-import com.pdiot.resumableuploadmanager.exceptions.InvalidFileException
-import com.pdiot.resumableuploadmanager.exceptions.InvalidHttpResponseException
-import com.pdiot.resumableuploadmanager.exceptions.MissingInputDataException
-import com.pdiot.resumableuploadmanager.exceptions.MissingWorkIdException
-import com.pdiot.resumableuploadmanager.models.UploadWorkerDataConstants
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpResponse
+import com.pdiot.resumableuploadwizard.builders.FinalUploadResponseBuilder
+import com.pdiot.resumableuploadwizard.builders.ResumableUploadRequestBuilder
+import com.pdiot.resumableuploadwizard.builders.ResumableUploadResponseBuilder
+import com.pdiot.resumableuploadwizard.clients.CustomHttpClient
+import com.pdiot.resumableuploadwizard.clients.LocalFileReader
+import com.pdiot.resumableuploadwizard.exceptions.InvalidFileException
+import com.pdiot.resumableuploadwizard.exceptions.InvalidHttpResponseException
+import com.pdiot.resumableuploadwizard.exceptions.MissingInputDataException
+import com.pdiot.resumableuploadwizard.exceptions.MissingWorkIdException
+import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
 import java.util.concurrent.ConcurrentHashMap
 
 

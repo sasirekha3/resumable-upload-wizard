@@ -1,13 +1,12 @@
-package com.pdiot.resumableuploadmanager.workers
+package com.pdiot.resumableuploadwizard.workers
 
 import android.content.Context
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.google.common.util.concurrent.ListenableFuture
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpResponse
-import com.pdiot.resumableuploadmanager.models.UploadWorkerDataConstants.*
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants.*
 
 abstract class ResumableUploadWorker (context: Context, userParameters: WorkerParameters) : Worker(context, userParameters) {
     companion object {

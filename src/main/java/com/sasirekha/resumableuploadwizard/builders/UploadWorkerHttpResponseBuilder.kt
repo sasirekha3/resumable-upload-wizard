@@ -1,7 +1,7 @@
-package com.pdiot.resumableuploadmanager.builders
+package com.pdiot.resumableuploadwizard.builders
 
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpResponse
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
 import okhttp3.Headers
 import java.util.*
 

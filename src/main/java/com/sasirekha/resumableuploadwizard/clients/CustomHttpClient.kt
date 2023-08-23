@@ -1,12 +1,10 @@
-package com.pdiot.resumableuploadmanager.clients
+package com.pdiot.resumableuploadwizard.clients
 
-import android.net.Network
 import android.util.Log
-import com.google.gson.Gson
-import com.pdiot.resumableuploadmanager.builders.UploadWorkerHttpResponseBuilder
-import com.pdiot.resumableuploadmanager.exceptions.HttpRequestException
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpResponse
+import com.pdiot.resumableuploadwizard.builders.UploadWorkerHttpResponseBuilder
+import com.pdiot.resumableuploadwizard.exceptions.HttpRequestException
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
 import okhttp3.*
 import okhttp3.internal.Internal.logger
 import java.io.IOException

@@ -1,11 +1,11 @@
-package com.pdiot.resumableuploadmanager.builders
+package com.pdiot.resumableuploadwizard.builders
 
 import android.net.Network
 import android.util.Log
 import androidx.work.Data
-import com.pdiot.resumableuploadmanager.exceptions.RequestBuildingException
-import com.pdiot.resumableuploadmanager.models.ResumableUploadRequest
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.exceptions.RequestBuildingException
+import com.pdiot.resumableuploadwizard.models.ResumableUploadRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
 
 class ResumableUploadRequestBuilder (override val inputData: Data, override val workId: String, override val network: Network?):
     UploadWorkerHttpRequestBuilder(inputData, workId, network) {

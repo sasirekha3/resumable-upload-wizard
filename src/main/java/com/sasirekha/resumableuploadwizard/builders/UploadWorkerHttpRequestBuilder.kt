@@ -1,9 +1,9 @@
-package com.pdiot.resumableuploadmanager.builders
+package com.pdiot.resumableuploadwizard.builders
 
 import android.net.Network
 import androidx.work.Data
-import com.pdiot.resumableuploadmanager.models.UploadWorkerDataConstants
-import com.pdiot.resumableuploadmanager.models.UploadWorkerHttpRequest
+import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants
+import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
 
 abstract class UploadWorkerHttpRequestBuilder(open val inputData: Data, open val workId: String, open val network: Network?) {
     abstract var requestBody: ByteArray?

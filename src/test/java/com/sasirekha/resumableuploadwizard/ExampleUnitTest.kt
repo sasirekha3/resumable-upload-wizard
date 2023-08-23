@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager
+package com.sasirekha.resumableuploadwizard
 
 import org.junit.Test
 

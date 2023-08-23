@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadmanager.models
+package com.pdiot.resumableuploadwizard.models
 
 enum class UploadWorkerDataConstants {
 
