@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.models
+package com.sasirekha.resumableuploadwizard.models
 
 import com.google.gson.Gson
 
@@ -25,6 +25,19 @@ class ObjectMetadata (
 
     override fun toString(): String {
         return gson.toJson(this);
+    }
+
+    fun getMap(): HashMap<String, String> {
+        val map = HashMap<String, String>()
+
+        map.put("requestId", requestId)
+        map.put("username", username)
+        map.put("requestTimestamp", requestTimestamp.toString())
+        map.put("recordName", recordName)
+        map.put("contentType", contentType)
+        map.put("contentLength", contentLength.toString())
+
+        return map
     }
 
 }

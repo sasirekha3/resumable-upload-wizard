@@ -1,9 +1,9 @@
-package com.pdiot.resumableuploadwizard
+package com.sasirekha.resumableuploadwizard
 
 import android.net.Uri
 import androidx.work.Data
 import com.google.gson.Gson
-import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerDataConstants
 import java.util.*
 
 class UploadConfiguration (

@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.models
+package com.sasirekha.resumableuploadwizard.models
 
 import android.net.Network
 import androidx.work.Data
@@ -41,12 +41,12 @@ class SessionUrlRequest(val inputData: Data, override val workId: String, overri
     }
 
 override val carryOverDataList: List<UploadWorkerDataConstants> = arrayListOf(
-        UploadWorkerDataConstants.DATA_LOCATION,
-        UploadWorkerDataConstants.CHUNK_SIZE,
-        UploadWorkerDataConstants.CONTENT_TYPE,
-        UploadWorkerDataConstants.TOTAL_OBJECT_SIZE,
-        UploadWorkerDataConstants.RECORD_NAME,
-        UploadWorkerDataConstants.CHECKSUM
+    UploadWorkerDataConstants.DATA_LOCATION,
+    UploadWorkerDataConstants.CHUNK_SIZE,
+    UploadWorkerDataConstants.CONTENT_TYPE,
+    UploadWorkerDataConstants.TOTAL_OBJECT_SIZE,
+    UploadWorkerDataConstants.RECORD_NAME,
+    UploadWorkerDataConstants.CHECKSUM
     )
     override val isLastRequest: Boolean = false
 }

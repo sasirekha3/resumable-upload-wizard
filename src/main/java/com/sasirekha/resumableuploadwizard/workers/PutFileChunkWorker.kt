@@ -1,27 +1,27 @@
-package com.pdiot.resumableuploadwizard.workers
+package com.sasirekha.resumableuploadwizard.workers
 
 import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.work.Data
 import androidx.work.WorkerParameters
-import com.pdiot.resumableuploadwizard.builders.FinalUploadResponseBuilder
-import com.pdiot.resumableuploadwizard.builders.ResumableUploadRequestBuilder
-import com.pdiot.resumableuploadwizard.builders.ResumableUploadResponseBuilder
-import com.pdiot.resumableuploadwizard.clients.CustomHttpClient
-import com.pdiot.resumableuploadwizard.clients.LocalFileReader
-import com.pdiot.resumableuploadwizard.exceptions.InvalidFileException
-import com.pdiot.resumableuploadwizard.exceptions.InvalidHttpResponseException
-import com.pdiot.resumableuploadwizard.exceptions.MissingInputDataException
-import com.pdiot.resumableuploadwizard.exceptions.MissingWorkIdException
-import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.builders.FinalUploadResponseBuilder
+import com.sasirekha.resumableuploadwizard.builders.ResumableUploadRequestBuilder
+import com.sasirekha.resumableuploadwizard.builders.ResumableUploadResponseBuilder
+import com.sasirekha.resumableuploadwizard.clients.CustomHttpClient
+import com.sasirekha.resumableuploadwizard.clients.LocalFileReader
+import com.sasirekha.resumableuploadwizard.exceptions.InvalidFileException
+import com.sasirekha.resumableuploadwizard.exceptions.InvalidHttpResponseException
+import com.sasirekha.resumableuploadwizard.exceptions.MissingInputDataException
+import com.sasirekha.resumableuploadwizard.exceptions.MissingWorkIdException
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerDataConstants
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
 import java.util.concurrent.ConcurrentHashMap
 
 
 class PutFileChunkWorker (val context: Context, userParameters: WorkerParameters
-): ResumableUploadWorker (context, userParameters) {
+): ResumableUploadWorker(context, userParameters) {
     companion object {
         private const val TAG = "PutFileChunkW"
         private val readerMap = ConcurrentHashMap<String, LocalFileReader>()

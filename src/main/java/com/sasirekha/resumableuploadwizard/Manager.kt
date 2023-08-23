@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard
+package com.sasirekha.resumableuploadwizard
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,11 +9,11 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkContinuation
 import androidx.work.WorkManager
-import com.pdiot.resumableuploadwizard.exceptions.UploadException
-import com.pdiot.resumableuploadwizard.models.MD5
-import com.pdiot.resumableuploadwizard.workers.GetSessionUriWorker
-import com.pdiot.resumableuploadwizard.workers.PutFileChunkWorker
-import com.pdiot.resumableuploadwizard.workers.ResumableUploadWorker
+import com.sasirekha.resumableuploadwizard.exceptions.UploadException
+import com.sasirekha.resumableuploadwizard.models.MD5
+import com.sasirekha.resumableuploadwizard.workers.GetSessionUriWorker
+import com.sasirekha.resumableuploadwizard.workers.PutFileChunkWorker
+import com.sasirekha.resumableuploadwizard.workers.ResumableUploadWorker
 import java.util.ArrayList
 
 
@@ -35,7 +35,7 @@ class Manager(
 
     val totalNumberOfUploads: Int = (((configuration.totalObjectSize) / configuration.chunkSize)).toInt() + 1
     private var workRequestList: List<OneTimeWorkRequest>? = null
-
+    var workId: String? = null
     init {
         // Get true file size
         val fileDescriptor = context.contentResolver.openFileDescriptor(configuration.dataLocation, "r")
@@ -44,7 +44,7 @@ class Manager(
 
         var checksum: String? = null
         // Create workId from the string of the filePath (not file contents)
-        val workId = "${ResumableUploadWorker.workNamePrefix}${md5.calculateMD5(configuration.dataLocation.toString())}"
+        workId = "${ResumableUploadWorker.workNamePrefix}${md5.calculateMD5(configuration.dataLocation.toString())}"
 
         // Calculate MD5 checksum of file contents
         checksum = md5.calculateMD5(configuration.dataLocation)
@@ -60,16 +60,16 @@ class Manager(
         val inputData = configuration.getInitialInputData()
         val sessionUriWork = OneTimeWorkRequestBuilder<GetSessionUriWorker>()
             .setConstraints(constraints)
-            .addTag(workId)
+            .addTag(workId!!)
             .setInputData(inputData).build()
         mutableWorkRequestList.add(sessionUriWork)
 
         continuation = workManager.beginUniqueWork(
-            workId,
+            workId!!,
             existingWorkPolicy, sessionUriWork)
 
         // Split file into chunks and update continuation
-        chainChunkedContinuationRequests(fileSize!!, workId)
+        chainChunkedContinuationRequests(fileSize!!)
 
         // Make work request list available for observability
         workRequestList = mutableWorkRequestList.toList()
@@ -85,7 +85,7 @@ class Manager(
     }
 
     @SuppressLint("EnqueueWork")
-    private fun chainChunkedContinuationRequests(fileSize: Long, workId: String){
+    private fun chainChunkedContinuationRequests(fileSize: Long){
         var offset = 0;
         val chunkSize = configuration.chunkSize
         val objectSize = fileSize
@@ -94,7 +94,7 @@ class Manager(
             Log.d("TTTTTTTTT", "CALLING PUT FILE CHUNK WORKER");
             try {
                 val uploadBuilder = OneTimeWorkRequestBuilder<PutFileChunkWorker>()
-                    .addTag(workId)
+                    .addTag(workId!!)
                     .setConstraints(constraints)
                 val uploadWork = uploadBuilder.build()
                 mutableWorkRequestList.add(uploadWork)

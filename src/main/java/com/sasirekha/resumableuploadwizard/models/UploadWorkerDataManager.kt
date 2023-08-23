@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.models
+package com.sasirekha.resumableuploadwizard.models
 
 import androidx.work.Data
 import okhttp3.Request

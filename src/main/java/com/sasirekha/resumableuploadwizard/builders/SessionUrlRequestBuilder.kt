@@ -1,13 +1,13 @@
-package com.pdiot.resumableuploadwizard.builders
+package com.sasirekha.resumableuploadwizard.builders
 
 import android.net.Network
 import android.util.Log
 import androidx.work.Data
-import com.pdiot.resumableuploadwizard.exceptions.RequestBuildingException
-import com.pdiot.resumableuploadwizard.models.ObjectMetadata
-import com.pdiot.resumableuploadwizard.models.SessionUrlRequest
-import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants.*
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.sasirekha.resumableuploadwizard.exceptions.RequestBuildingException
+import com.sasirekha.resumableuploadwizard.models.ObjectMetadata
+import com.sasirekha.resumableuploadwizard.models.SessionUrlRequest
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerDataConstants.*
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
 import java.util.*
 
 class SessionUrlRequestBuilder(override val inputData: Data, override val workId: String, override val network: Network?): UploadWorkerHttpRequestBuilder(inputData, workId, network) {

@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.models
+package com.sasirekha.resumableuploadwizard.models
 
 import android.net.Network
 import androidx.work.Data

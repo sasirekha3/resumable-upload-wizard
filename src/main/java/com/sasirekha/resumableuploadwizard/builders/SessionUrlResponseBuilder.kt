@@ -1,7 +1,7 @@
-package com.pdiot.resumableuploadwizard.builders
+package com.sasirekha.resumableuploadwizard.builders
 
-import com.pdiot.resumableuploadwizard.models.SessionUrlResponse
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.models.SessionUrlResponse
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
 
 class SessionUrlResponseBuilder: UploadWorkerHttpResponseBuilder() {
     override fun build(): UploadWorkerHttpResponse {

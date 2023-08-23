@@ -1,7 +1,7 @@
-package com.pdiot.resumableuploadwizard.builders
+package com.sasirekha.resumableuploadwizard.builders
 
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
 import okhttp3.Headers
 import java.util.*
 

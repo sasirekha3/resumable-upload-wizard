@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.models
+package com.sasirekha.resumableuploadwizard.models
 
 import androidx.work.Data
 import com.google.gson.Gson
@@ -70,7 +70,9 @@ class FinalUploadResponse(
     }
 
     override fun isValidResponseBody(): Boolean {
-        if((code == 200 || code == 201) && body.md5Hash.equals(request.getInputString(UploadWorkerDataConstants.CHECKSUM))){
+        if((code == 200 || code == 201) && body.md5Hash.equals(request.getInputString(
+                UploadWorkerDataConstants.CHECKSUM
+            ))){
             return true
         }
         return false

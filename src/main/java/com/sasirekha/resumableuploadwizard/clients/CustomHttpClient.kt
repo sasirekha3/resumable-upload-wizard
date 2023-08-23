@@ -1,10 +1,10 @@
-package com.pdiot.resumableuploadwizard.clients
+package com.sasirekha.resumableuploadwizard.clients
 
 import android.util.Log
-import com.pdiot.resumableuploadwizard.builders.UploadWorkerHttpResponseBuilder
-import com.pdiot.resumableuploadwizard.exceptions.HttpRequestException
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.builders.UploadWorkerHttpResponseBuilder
+import com.sasirekha.resumableuploadwizard.exceptions.HttpRequestException
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
 import okhttp3.*
 import okhttp3.internal.Internal.logger
 import java.io.IOException

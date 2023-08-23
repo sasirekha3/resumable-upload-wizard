@@ -1,4 +1,4 @@
-package com.pdiot.resumableuploadwizard.exceptions
+package com.sasirekha.resumableuploadwizard.exceptions
 
 class InvalidHttpResponseException(message: String): Exception(message) {
 

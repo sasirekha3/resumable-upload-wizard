@@ -1,7 +1,7 @@
-package com.pdiot.resumableuploadwizard.builders
+package com.sasirekha.resumableuploadwizard.builders
 
-import com.pdiot.resumableuploadwizard.models.FinalUploadResponse
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.models.FinalUploadResponse
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
 
 class FinalUploadResponseBuilder: UploadWorkerHttpResponseBuilder() {
     override fun build(): UploadWorkerHttpResponse {

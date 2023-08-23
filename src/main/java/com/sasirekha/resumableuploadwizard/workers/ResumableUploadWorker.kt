@@ -1,12 +1,12 @@
-package com.pdiot.resumableuploadwizard.workers
+package com.sasirekha.resumableuploadwizard.workers
 
 import android.content.Context
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpRequest
-import com.pdiot.resumableuploadwizard.models.UploadWorkerHttpResponse
-import com.pdiot.resumableuploadwizard.models.UploadWorkerDataConstants.*
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpResponse
+import com.sasirekha.resumableuploadwizard.models.UploadWorkerDataConstants.*
 
 abstract class ResumableUploadWorker (context: Context, userParameters: WorkerParameters) : Worker(context, userParameters) {
     companion object {
