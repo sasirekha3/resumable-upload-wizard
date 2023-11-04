@@ -1,6 +1,7 @@
 package com.sasirekha.resumableuploadwizard.clients
 
 import android.util.Log
+import com.sasirekha.resumableuploadwizard.BuildConfig
 import com.sasirekha.resumableuploadwizard.builders.UploadWorkerHttpResponseBuilder
 import com.sasirekha.resumableuploadwizard.exceptions.HttpRequestException
 import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
@@ -79,7 +80,7 @@ class CustomHttpClient private constructor() {
             }
 
             // Add auth header
-            requestBuilder.addHeader("x-api-key", BuildConfig.gcpapixapikey)
+            requestBuilder.addHeader("x-api-key", "bHVBY7878V^^*GT^\$HJB")
 
             val response: Response = client.newCall(requestBuilder.build()).execute();
 

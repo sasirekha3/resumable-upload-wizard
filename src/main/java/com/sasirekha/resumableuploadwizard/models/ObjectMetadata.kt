@@ -17,7 +17,8 @@ class ObjectMetadata (
     val requestTimestamp: Long,
     val recordName: String,
     val contentType: String,
-    val contentLength: Long
+    val contentLength: Long,
+    val checksum: String
 ) {
     companion object {
         private val gson = Gson()
@@ -36,6 +37,7 @@ class ObjectMetadata (
         map.put("recordName", recordName)
         map.put("contentType", contentType)
         map.put("contentLength", contentLength.toString())
+        map.put("checksum", checksum)
 
         return map
     }

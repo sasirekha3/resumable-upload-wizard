@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.pdiot.resumableuploadmanager.test", appContext.packageName)
+        assertEquals("com.sasirekha.resumableuploadmanager.test", appContext.packageName)
     }
 }

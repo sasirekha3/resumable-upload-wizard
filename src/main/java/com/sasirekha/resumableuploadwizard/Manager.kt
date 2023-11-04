@@ -9,6 +9,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkContinuation
 import androidx.work.WorkManager
+import com.sasirekha.resumableuploadwizard.exceptions.RequestBuildingException
 import com.sasirekha.resumableuploadwizard.exceptions.UploadException
 import com.sasirekha.resumableuploadwizard.models.MD5
 import com.sasirekha.resumableuploadwizard.workers.GetSessionUriWorker
@@ -51,7 +52,7 @@ class Manager(
 
 
         if(fileSize == null || fileSize == 0L || workId == null || checksum == null) {
-            // TODO: throw custom exception
+            throw RequestBuildingException("Invalid fileSize/workId/checksum")
         }
 
         Log.d("FILE_SIZE", "$fileSize")

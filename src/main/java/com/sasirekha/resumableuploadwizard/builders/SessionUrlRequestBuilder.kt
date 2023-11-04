@@ -18,23 +18,7 @@ class SessionUrlRequestBuilder(override val inputData: Data, override val workId
 
     override fun build(): UploadWorkerHttpRequest {
         try {
-            val requestId: String =
-                getInputData(REQUEST_ID)!!;
-            val recordName: String =
-                getInputData(RECORD_NAME)!!;
-            val username: String =
-                getInputData(USERNAME)!!;
-            val requestTimestamp: Long = Date().time;
-            val contentType: String = getInputData(CONTENT_TYPE)!!
-            val contentLength: Long = getInputData(TOTAL_OBJECT_SIZE)!!.toLong()
-            requestBody = ObjectMetadata(
-                requestId,
-                username,
-                requestTimestamp,
-                recordName,
-                contentType,
-                contentLength
-            ).toString().toByteArray()
+            requestBody = getInputData(METADATA)!!.toByteArray()
             return SessionUrlRequest(inputData, workId, network, requestBody)
         } catch(e: Exception) {
             val msg = "Unable to build request because: ${e.message}"

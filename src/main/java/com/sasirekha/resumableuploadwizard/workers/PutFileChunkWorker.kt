@@ -61,8 +61,6 @@ class PutFileChunkWorker (val context: Context, userParameters: WorkerParameters
             removeCurrentFileReader()
 
             // Notify the user of failure
-            ProgressNotification.notifyWorkCompletion(context, inputData.getString(
-                UploadWorkerDataConstants.RECORD_NAME.name)!!, false);
             Result.failure()
         }
     }
@@ -99,10 +97,6 @@ class PutFileChunkWorker (val context: Context, userParameters: WorkerParameters
 
             if(request.isLastRequest){
                 // If the last request was performed successfully with a valid response,
-                // Notify the user of completion
-                ProgressNotification.notifyWorkCompletion(context, request.getInputString(
-                    UploadWorkerDataConstants.RECORD_NAME
-                )!!, true)
 
                 // Remove the corresponding file reader
                 removeCurrentFileReader()

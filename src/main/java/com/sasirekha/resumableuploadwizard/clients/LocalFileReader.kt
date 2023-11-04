@@ -3,7 +3,8 @@ package com.sasirekha.resumableuploadwizard.clients
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import com.pdiot.backupfilestogcp.exceptions.LocalFileReaderException
+
+import com.sasirekha.resumableuploadwizard.exceptions.LocalFileReaderException
 import java.io.BufferedInputStream
 import java.io.IOException
 

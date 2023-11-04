@@ -33,7 +33,7 @@ class SessionUrlRequest(val inputData: Data, override val workId: String, overri
     }
 
     override fun getUrl(): URL {
-        return URL(BuildConfig.gcpapiurl)
+        return URL("https://resumable-upload-test-fhlgusnwca-nw.a.run.app")
     }
 
     override fun getContentType(): String {
