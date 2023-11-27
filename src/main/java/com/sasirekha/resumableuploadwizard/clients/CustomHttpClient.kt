@@ -80,7 +80,7 @@ class CustomHttpClient private constructor() {
             }
 
             // Add auth header
-            requestBuilder.addHeader("x-api-key", "bHVBY7878V^^*GT^\$HJB")
+//            requestBuilder.addHeader("x-api-key", "bHVBY7878V^^*GT^\$HJB")
 
             val response: Response = client.newCall(requestBuilder.build()).execute();
 

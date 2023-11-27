@@ -10,7 +10,16 @@ class SessionUrlRequest(val inputData: Data, override val workId: String, overri
 
 
     override fun getCustomHeaders(): Map<String, String> {
-        return HashMap<String, String>()
+        val authHeader = HashMap<String, String>()
+        getInputString(UploadWorkerDataConstants.SESSION_REQUEST_API_AUTH_HEADER)?.let {
+            getInputString(UploadWorkerDataConstants.SESSION_REQUEST_API_AUTH_VALUE)?.let { it1 ->
+                authHeader.put(
+                    it,
+                    it1
+                )
+            }
+        }
+        return authHeader
     }
 
     override fun getRequestBody(): ByteArray? {
@@ -33,7 +42,7 @@ class SessionUrlRequest(val inputData: Data, override val workId: String, overri
     }
 
     override fun getUrl(): URL {
-        return URL("https://resumable-upload-test-fhlgusnwca-nw.a.run.app")
+        return URL(getInputString(UploadWorkerDataConstants.SESSION_REQUEST_API_URL))
     }
 
     override fun getContentType(): String {
