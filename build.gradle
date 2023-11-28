@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
+
+group = 'com.sasirekha'
+version = '1.0'
 
 android {
     namespace 'com.sasirekha.resumableuploadwizard'
@@ -45,6 +49,26 @@ android {
     }
 }
 
+publishing {
+    publications {
+        release(MavenPublication) {
+            group = 'com.sasirekha'
+            artifactId = 'resumableuploadwizard'
+            version = '1.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'resumableuploadwizard'
+            url = "$buildDir/repo"
+        }
+    }
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -72,3 +96,16 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
 }
+
+task wrapper(type: Wrapper){
+    gradleVersion = '7.2'
+}
+
+tasks.register('generateRepo', Zip) {
+    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
+    from publishTask.map { it.getRepository().getUrl() }
+    into 'resumableuploadwizard'
+    archiveFileName.set('resumableuploadwizard.zip')
+}
+
+tasks.register("prepareKotlinBuildScriptModel"){}
