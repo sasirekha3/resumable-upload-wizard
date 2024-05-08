@@ -1,26 +1,30 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//plugins {
+//    id 'com.android.application' version '8.0.2' apply false
+//    id 'com.android.library' version '8.0.2' apply true
+//    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+//}
+
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+    id 'com.android.library' version '8.4.0'
+    id 'org.jetbrains.kotlin.android' version '1.7.20'
     id 'maven-publish'
 }
 
 group = 'com.sasirekha'
-version = '1.0'
+version = '2.0'
 
 android {
     namespace 'com.sasirekha.resumableuploadwizard'
 
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
-        minSdk 31
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        minSdk 30
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -71,9 +75,9 @@ publishing {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.12.0'
 
     testImplementation 'junit:junit:4.13.2'
 
@@ -93,19 +97,19 @@ dependencies {
 
     // Additional dependencies
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
 }
 
-task wrapper(type: Wrapper){
-    gradleVersion = '7.2'
-}
-
-tasks.register('generateRepo', Zip) {
-    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
-    from publishTask.map { it.getRepository().getUrl() }
-    into 'resumableuploadwizard'
-    archiveFileName.set('resumableuploadwizard.zip')
-}
-
-tasks.register("prepareKotlinBuildScriptModel"){}
+//task wrapper(type: Wrapper){
+//    gradleVersion = '7.2'
+//}
+//
+//tasks.register('generateRepo', Zip) {
+//    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
+//    from publishTask.map { it.getRepository().getUrl() }
+//    into 'resumableuploadwizard'
+//    archiveFileName.set('resumableuploadwizard.zip')
+//}
+//
+//tasks.register("prepareKotlinBuildScriptModel"){}
