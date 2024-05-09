@@ -1,9 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-//plugins {
-//    id 'com.android.application' version '8.0.2' apply false
-//    id 'com.android.library' version '8.0.2' apply true
-//    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
-//}
 
 plugins {
     id 'com.android.library' version '8.4.0'
@@ -68,48 +63,19 @@ publishing {
     repositories {
         maven {
             name = 'resumableuploadwizard'
-            url = "$buildDir/repo"
+            url = "$layout.buildDirectory/repo"
         }
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.13.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.12.0'
-
-    testImplementation 'junit:junit:4.13.2'
-
-    // AndroidTest dependencies
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    //  Core library
-    androidTestImplementation("androidx.test:core:1.5.0")
-    //  AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-    //  Assertions
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.ext:truth:1.5.0")
-    //  Espresso dependencies
-    androidTestImplementation( "androidx.test.espresso:espresso-core:3.5.1")
-
-    // Additional dependencies
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'androidx.work:work-runtime-ktx:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
 }
 
-//task wrapper(type: Wrapper){
-//    gradleVersion = '7.2'
-//}
-//
-//tasks.register('generateRepo', Zip) {
-//    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
-//    from publishTask.map { it.getRepository().getUrl() }
-//    into 'resumableuploadwizard'
-//    archiveFileName.set('resumableuploadwizard.zip')
-//}
-//
-//tasks.register("prepareKotlinBuildScriptModel"){}
+tasks.register('generateRepo', Zip) {
+    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
+    from publishTask.map { it.getRepository().getUrl() }
+    into 'resumableuploadwizard'
+    archiveFileName.set('resumableuploadwizard.zip')
+}
+

@@ -1,7 +1,6 @@
 package com.sasirekha.resumableuploadwizard.clients
 
 import android.util.Log
-import com.sasirekha.resumableuploadwizard.BuildConfig
 import com.sasirekha.resumableuploadwizard.builders.UploadWorkerHttpResponseBuilder
 import com.sasirekha.resumableuploadwizard.exceptions.HttpRequestException
 import com.sasirekha.resumableuploadwizard.models.UploadWorkerHttpRequest
@@ -13,7 +12,7 @@ import java.io.IOException
 class CustomHttpClient private constructor() {
     companion object {
         private val client = OkHttpClient.Builder()
-//            .addNetworkInterceptor(LoggingInterceptor())
+            .addNetworkInterceptor(LoggingInterceptor())
             .build();
         private const val TAG = "CustomHttpClient"
         private var instance: CustomHttpClient? = null;
