@@ -4,7 +4,7 @@ import androidx.work.Data
 import com.google.gson.Gson
 import com.sasirekha.resumableuploadwizard.models.ObjectMetadata
 import com.sasirekha.resumableuploadwizard.models.UploadWorkerDataConstants
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
 
 //{

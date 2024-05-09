@@ -9,6 +9,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkContinuation
 import androidx.work.WorkManager
+import com.sasirekha.resumableuploadwizard.exceptions.ManagerException
 import com.sasirekha.resumableuploadwizard.exceptions.RequestBuildingException
 import com.sasirekha.resumableuploadwizard.exceptions.UploadException
 import com.sasirekha.resumableuploadwizard.models.MD5
@@ -38,42 +39,42 @@ class Manager(
     private var workRequestList: List<OneTimeWorkRequest>? = null
     var workId: String? = null
     init {
-        // Get true file size
-        val fileDescriptor = context.contentResolver.openFileDescriptor(configuration.dataLocation, "r")
-        val fileSize: Long? = fileDescriptor?.statSize
-        fileDescriptor?.close()
+        try {
+            // Get true file size
+            val fileDescriptor = context.contentResolver.openFileDescriptor(configuration.dataLocation, "r")
+            val fileSize: Long? = fileDescriptor?.statSize
+            fileDescriptor?.close()
 
-        var checksum: String? = null
-        // Create workId from the string of the filePath (not file contents)
-        workId = "${ResumableUploadWorker.workNamePrefix}${md5.calculateMD5(configuration.dataLocation.toString())}"
+            var checksum: String? = null
+            // Create workId from the string of the filePath (not file contents)
+            workId = "${ResumableUploadWorker.workNamePrefix}${md5.calculateMD5(configuration.dataLocation.toString())}"
 
-        // Calculate MD5 checksum of file contents
-        checksum = md5.calculateMD5(configuration.dataLocation)
+            // Calculate MD5 checksum of file contents
+            checksum = md5.calculateMD5(configuration.dataLocation)
 
 
-        if(fileSize == null || fileSize == 0L || workId == null || checksum == null) {
-            throw RequestBuildingException("Invalid fileSize/workId/checksum")
+            if(fileSize == null || fileSize == 0L || workId == null || checksum == null) {
+                throw RequestBuildingException("Invalid fileSize/workId/checksum")
+            }
+
+            Log.d(TAG, "FILE_SIZE: $fileSize")
+
+            // Create initial work request
+            createInitialWorkRequest()
+
+            // Split file into chunks and update continuation
+            chainChunkedContinuationRequests(fileSize!!)
+
+            // Make work request list available for observability
+            workRequestList = mutableWorkRequestList.toList()
+
+        } catch (exception: Exception) {
+            if(exception.message != null) {
+                throw ManagerException(exception.message!!);
+            } else {
+                throw ManagerException("Error creating workers.");
+            }
         }
-
-        Log.d("FILE_SIZE", "$fileSize")
-
-        // Enqueue initial work request
-        val inputData = configuration.getInitialInputData()
-        val sessionUriWork = OneTimeWorkRequestBuilder<GetSessionUriWorker>()
-            .setConstraints(constraints)
-            .addTag(workId!!)
-            .setInputData(inputData).build()
-        mutableWorkRequestList.add(sessionUriWork)
-
-        continuation = workManager.beginUniqueWork(
-            workId!!,
-            existingWorkPolicy, sessionUriWork)
-
-        // Split file into chunks and update continuation
-        chainChunkedContinuationRequests(fileSize!!)
-
-        // Make work request list available for observability
-        workRequestList = mutableWorkRequestList.toList()
     }
 
     fun enqueueWork() {
@@ -86,13 +87,27 @@ class Manager(
     }
 
     @SuppressLint("EnqueueWork")
+    private fun createInitialWorkRequest(){
+        val inputData = configuration.getInitialInputData()
+        val sessionUriWork = OneTimeWorkRequestBuilder<GetSessionUriWorker>()
+            .setConstraints(constraints)
+            .addTag(workId!!)
+            .setInputData(inputData).build()
+        mutableWorkRequestList.add(sessionUriWork)
+
+        continuation = workManager.beginUniqueWork(
+            workId!!,
+            existingWorkPolicy, sessionUriWork)
+    }
+
+    @SuppressLint("EnqueueWork")
     private fun chainChunkedContinuationRequests(fileSize: Long){
         var offset = 0;
         val chunkSize = configuration.chunkSize
         val objectSize = fileSize
         // Add WorkRequests to blur the image the number of times requested
         while(offset < objectSize) {
-            Log.d("TTTTTTTTT", "CALLING PUT FILE CHUNK WORKER");
+            Log.d(TAG, "CALLING PUT FILE CHUNK WORKER");
             try {
                 val uploadBuilder = OneTimeWorkRequestBuilder<PutFileChunkWorker>()
                     .addTag(workId!!)
