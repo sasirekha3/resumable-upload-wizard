@@ -3,6 +3,16 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+ext {
+    mGroupId = "com.sasirekha"
+    mArtifactId = "resumableuploadwizard"
+    mVersionCode = 2
+    mVersionName = "2.0"
+
+    mLibraryName = "ResumableUploadWizard"
+    mLibraryDescription = "A library to perform a resumable (multi-part) upload using Android's Work library."
+}
+
 android {
     namespace 'com.sasirekha.resumableuploadwizard'
     compileSdk 34
@@ -41,6 +51,38 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
+
+                from components.release
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/sasirekha3/resumable-upload-wizard")
+                credentials {
+                    username = System.getenv("GPR_USER")
+                    password = System.getenv("GPR_KEY")
+                }
+            }
         }
     }
 }

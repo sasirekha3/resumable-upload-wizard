@@ -48,34 +48,22 @@ android {
     }
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            group = 'com.sasirekha'
-            artifactId = 'resumableuploadwizard'
-            version = '1.0'
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = 'resumableuploadwizard'
-            url = "$layout.buildDirectory/repo"
-        }
-    }
-}
-
-dependencies {
-
-}
-
-tasks.register('generateRepo', Zip) {
-    def publishTask = tasks.named('publishReleasePublicationToResumableuploadwizardRepo')
-    from publishTask.map { it.getRepository().getUrl() }
-    into 'resumableuploadwizard'
-    archiveFileName.set('resumableuploadwizard.zip')
-}
-
+//publishing {
+//    publications {
+//        release(MavenPublication) {
+//            group = 'com.sasirekha'
+//            artifactId = 'resumableuploadwizard'
+//            version = '1.0'
+//
+//            afterEvaluate {
+//                from components.release
+//            }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = 'resumableuploadwizard'
+//            url = "$layout.buildDirectory/repo"
+//        }
+//    }
+//}
