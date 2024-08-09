@@ -176,20 +176,20 @@ mgr.enqueueWork()
 
 ```kotlin
 // Notify after last request is complete by attaching an observer to the Live Data of the work
-        WorkManager.getInstance(context)
-            // requestId is the WorkRequest id
-            .getWorkInfoByIdLiveData(lastWorkRequest.id)
-            .observe(lifecycleOwner, androidx.lifecycle.Observer { workInfo: WorkInfo? ->
-                if (workInfo != null) {
-                    if (workInfo.state == WorkInfo.State.SUCCEEDED) {
-                        // Do something with progress information
-                        ProgressNotification.notifyWorkCompletion(context, fileName, true)
-                    } else if (workInfo.state == WorkInfo.State.FAILED) {
-                        // Do something with progress information
-                        ProgressNotification.notifyWorkCompletion(context, fileName, false)
-                    }
-                }
-            })
+WorkManager.getInstance(context)
+    // requestId is the WorkRequest id
+    .getWorkInfoByIdLiveData(lastWorkRequest.id)
+    .observe(lifecycleOwner, androidx.lifecycle.Observer { workInfo: WorkInfo? ->
+        if (workInfo != null) {
+            if (workInfo.state == WorkInfo.State.SUCCEEDED) {
+                // Do something with progress information
+                ProgressNotification.notifyWorkCompletion(context, fileName, true)
+            } else if (workInfo.state == WorkInfo.State.FAILED) {
+                // Do something with progress information
+                ProgressNotification.notifyWorkCompletion(context, fileName, false)
+            }
+        }
+    })
 
 ```
 
